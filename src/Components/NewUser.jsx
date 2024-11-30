@@ -1,6 +1,51 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "./Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const NewUser = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // console.log(name, email, password);
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+
+        const createdAt = result?.user?.metadata?.creationTime;
+
+        const newUser = { name, email ,createdAt};
+        // save new user in DataBase
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("create user in DB", data);
+            if(data.insertedId){
+              Swal.fire({
+                title: 'success',
+                text: 'Scucessfully Saved',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+            }
+          });
+      })
+      .catch((error) => {
+        console.log("ERROR", error);
+      });
+  };
+
   return (
     <div className=" bg-[#80C4E9] p-10 ">
       <div className="text-center">
@@ -8,8 +53,8 @@ const NewUser = () => {
         <p className="space-y-3">User the below form to create a new Account</p>
       </div>
 
-      <div className="">
-        <form >
+      <div>
+        <form onSubmit={handleUser}>
           <div className="w-6/12 mx-auto">
             <label className="label ">
               <span className="label-text font-semibold">Name</span>
@@ -30,6 +75,18 @@ const NewUser = () => {
               type="email"
               name="email"
               placeholder="Enter your Email"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="w-6/12 mx-auto">
+            <label className="label ">
+              <span className="label-text font-semibold">Password</span>
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter a Password"
               className="input input-bordered w-full"
               required
             />
@@ -58,7 +115,9 @@ const NewUser = () => {
           </div>
 
           <div className="w-6/12 mx-auto mt-5 ">
-            <button className="btn w-full bg-[#FF7F3E] text-white font-bold">Save</button>
+            <button className="btn w-full bg-[#FF7F3E] text-white font-bold">
+              Save
+            </button>
           </div>
         </form>
       </div>
