@@ -3,6 +3,7 @@ import NewUser from "../Components/NewUser";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
+import User from "../Pages/User";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
       {
         path: "/newuser",
         element: <NewUser></NewUser>,
+      },
+      {
+        path: "/users",
+        element: <User></User>,
+        loader: () => fetch("http://localhost:5000/users"),
       },
     ],
   },

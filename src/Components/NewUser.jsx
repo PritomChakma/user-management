@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { AuthContext } from "./Provider/AuthProvider";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "./Provider/AuthProvider";
 
 const NewUser = () => {
   const { createUser } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const NewUser = () => {
 
         const createdAt = result?.user?.metadata?.creationTime;
 
-        const newUser = { name, email ,createdAt};
+        const newUser = { name, email, createdAt };
         // save new user in DataBase
         fetch("http://localhost:5000/users", {
           method: "POST",
@@ -31,13 +32,13 @@ const NewUser = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log("create user in DB", data);
-            if(data.insertedId){
+            if (data.insertedId) {
               Swal.fire({
-                title: 'success',
-                text: 'Scucessfully Saved',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
+                title: "success",
+                text: "Scucessfully Saved",
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
             }
           });
       })
@@ -50,7 +51,7 @@ const NewUser = () => {
     <div className=" bg-[#80C4E9] p-10 ">
       <div className="text-center">
         <h1 className="text-2xl font-bold">New User</h1>
-        <p className="space-y-3">User the below form to create a new Account</p>
+        <p className="space-y-3">User the below form to Registration for new Account</p>
       </div>
 
       <div>
@@ -120,6 +121,12 @@ const NewUser = () => {
             </button>
           </div>
         </form>
+        <p className="text-center font-bold my-3">
+         You have an Account? Please{" "}
+          <Link className="text-[#4335A7]" to="/login">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

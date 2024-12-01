@@ -32,7 +32,10 @@ const Navbar = () => {
               </li>
 
               <li>
-                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/newuser">Registration</NavLink>
+              </li>
+              <li>
+                <NavLink to="/users">Users</NavLink>
               </li>
             </ul>
           </div>
@@ -45,7 +48,10 @@ const Navbar = () => {
             </li>
 
             <li>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/newuser">Registration</NavLink>
+            </li>
+            <li>
+              <NavLink to="/users">Users</NavLink>
             </li>
           </ul>
         </div>
