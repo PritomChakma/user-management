@@ -25,7 +25,8 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <User></User>,
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () =>
+          fetch("https://user-management-server-azure.vercel.app/users"),
       },
     ],
   },

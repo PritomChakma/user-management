@@ -22,7 +22,7 @@ const NewUser = () => {
 
         const newUser = { name, email, createdAt };
         // save new user in DataBase
-        fetch("http://localhost:5000/users", {
+        fetch("https://user-management-server-azure.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -51,7 +51,9 @@ const NewUser = () => {
     <div className=" bg-[#80C4E9] p-10 ">
       <div className="text-center">
         <h1 className="text-2xl font-bold">New User</h1>
-        <p className="space-y-3">User the below form to Registration for new Account</p>
+        <p className="space-y-3">
+          User the below form to Registration for new Account
+        </p>
       </div>
 
       <div>
@@ -122,7 +124,7 @@ const NewUser = () => {
           </div>
         </form>
         <p className="text-center font-bold my-3">
-         You have an Account? Please{" "}
+          You have an Account? Please{" "}
           <Link className="text-[#4335A7]" to="/login">
             Login
           </Link>
