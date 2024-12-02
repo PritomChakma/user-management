@@ -10,11 +10,11 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
 
         // Update last Login time
         const lastSignInTime = result?.user?.metadata?.lastSignInTime;
@@ -45,7 +45,7 @@ const Login = () => {
 
       <div>
         <form onSubmit={handleLoginUser}>
-          <div className="w-6/12 mx-auto">
+          <div className="md:w-6/12 mx-auto">
             <label className="label ">
               <span className="label-text font-semibold">Email</span>
             </label>
@@ -57,7 +57,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="w-6/12 mx-auto">
+          <div className="md:w-6/12 mx-auto">
             <label className="label ">
               <span className="label-text font-semibold">Password</span>
             </label>
@@ -70,7 +70,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="w-6/12 mx-auto mt-5 ">
+          <div className="md:w-6/12 mx-auto mt-5 ">
             <button className="btn w-full bg-[#FF7F3E] text-white font-bold">
               Login
             </button>

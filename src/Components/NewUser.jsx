@@ -16,7 +16,7 @@ const NewUser = () => {
     // console.log(name, email, password);
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
 
         const createdAt = result?.user?.metadata?.creationTime;
 
@@ -31,7 +31,7 @@ const NewUser = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("create user in DB", data);
+            // console.log("create user in DB", data);
             if (data.insertedId) {
               Swal.fire({
                 title: "success",
@@ -58,7 +58,7 @@ const NewUser = () => {
 
       <div>
         <form onSubmit={handleUser}>
-          <div className="w-6/12 mx-auto">
+          <div className="md:w-6/12 mx-auto">
             <label className="label ">
               <span className="label-text font-semibold">Name</span>
             </label>
@@ -70,7 +70,7 @@ const NewUser = () => {
               required
             />
           </div>
-          <div className="w-6/12 mx-auto">
+          <div className="md:w-6/12 mx-auto">
             <label className="label ">
               <span className="label-text font-semibold">Email</span>
             </label>
@@ -82,7 +82,7 @@ const NewUser = () => {
               required
             />
           </div>
-          <div className="w-6/12 mx-auto">
+          <div className="md:w-6/12 mx-auto">
             <label className="label ">
               <span className="label-text font-semibold">Password</span>
             </label>
@@ -117,7 +117,7 @@ const NewUser = () => {
             </div>
           </div>
 
-          <div className="w-6/12 mx-auto mt-5 ">
+          <div className="md:w-6/12 mx-auto mt-5 ">
             <button className="btn w-full bg-[#FF7F3E] text-white font-bold">
               Save
             </button>
