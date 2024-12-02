@@ -63,7 +63,7 @@ const User = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.createdAt}</td>
-                <td>{user.lastLoginTime}</td>
+                <td>{user.lastSignInTime}</td>
                 <td>
                   <button className="btn join-item bg-[#3C393B] text-white">
                     <i class="fa-regular fa-pen-to-square"></i>

@@ -17,8 +17,8 @@ const Login = () => {
         console.log(result.user);
 
         // Update last Login time
-        const lastLoginTime = result?.user?.metadata?.lastSignInTime;
-        const loginInfo = { email, lastLoginTime };
+        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+        const loginInfo = { email, lastSignInTime };
 
         fetch("http://localhost:5000/users", {
           method: "PATCH",
@@ -27,7 +27,7 @@ const Login = () => {
           },
           body: JSON.stringify(loginInfo),
         })
-          .the((res) => res.json())
+          .then((res) => res.json())
           .then((data) => {
             console.log("signin info update in db", data);
           });
